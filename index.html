@@ -52,22 +52,37 @@
     
       <p>Point of Sale Terminal</p>
     
-
-    
-
-    
-
-    
-
-    
-      <h2>Authors</h2>
-      <p>Ishan Chatterjee (ishan.chatterjee@gmail.com)<br/>      </p>
-    
-
-    
-      <h2>Contact</h2>
-      <p>Ishan Chatterjee (ishan.chatterjee@gmail.com)<br/>      </p>
-    
+    <h2>Application Design</h2>
+                <ul>
+                    <li>Clean separation of design (<code>public</code> folder) and logic (<code>application</code>
+                        folder)
+                    </li>
+                    <li>Class based business objects</li>
+                    <li>Uses Twitter's open sourced <a href="http://twitter.github.com/bootstrap/" target="_blank">Bootstrap
+                        toolkit</a> for layout and UI elements
+                    </li>
+                    <li>Exceptions are handled gracefully and are bubbled to the UI layer (for example: <a
+                        href="?orderInput=FAIL">Trigger exception</a>)
+                    </li>
+                    <li>Pricing (both per item and volume discounts) is initialized on application start using a
+                        <code>GLOBAL</code> array
+                    </li>
+                    <li>Pricing configuration changes are stored in <code>$_SESSION</code> (and are, of course, unique
+                        to a user). After adding a new item to the pricing configuration
+                        (for example: Z), the same item can then be used in a new order
+                    </li>
+                </ul>
+                <hr/>
+                <h2>Assumptions</h2>
+                <ul>
+                    <li>Does not support multiple volume discounts for the same item</li>
+                    <li>Printing the invoice/total only requires knowing the counts of each unique item; the application
+                        could just maintain
+                        an incremented counter of each item. However, the assumption is that there might be some further
+                        work/logic on the
+                        <code>Order</code> instance so the complete <code>LineItem</code> is stored.
+                    </li>
+                </ul>
 
     <h2>Download</h2>
     <p>
